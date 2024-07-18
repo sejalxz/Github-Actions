@@ -1,4 +1,4 @@
-name: 01basic
+name: 02dependency
 
 on: push
 
@@ -19,3 +19,12 @@ jobs:
               uses: actions/checkout@v2
             - name: Step two
               run: "Get-ChildItem Env: | Sort-Object Name"
+    job3:
+        name: Third Job
+        runs-on: macos-latest
+        needs: [job1, job2]
+        steps:
+            - name: Step one
+              uses: actions/checkout@v2
+            - name: Step two
+              run: env | sort
