@@ -1,34 +1,22 @@
 name: ChallengeComplexWorkFlow
 on: push
 jobs:
-    job1: 
-        name: Job-1
+    Job-1:
         runs-on: ubuntu_latest
         steps:
-          - name: Step 1
-            uses: actions/checkout@v2
-          - name: Step 2
-            run: echo "$now"
-    job2:
-        name: Job-2
+          - uses: actions/checkout@v2
+          - run: echo "$now"
+    Job-2:
         runs-on: windows_latest
         steps:
-          - name: Step 1
-            uses: actions/checkout@v2
-          - name: Step 2
-            run: Write-Output "$(Get-Date)"
-    job3:
-        name: Job-3
+          - run: Write-Output "$(Get-Date)"
+    Job-3:
         runs-on: macos_latest
         steps:
-          - name: Step 1
-            uses: actions/checkout@v2
-          - name: Step 2
-            run: echo "$now"
-    job4:
-        name: Job-4
+          - run: echo "$now"
+    Job-4:
         runs-on: macos_latest
-        needs: [job1, job2, job3]
+        needs: [Job-1, Job-2, Job-3]
         steps:
           - name: Step 1
             uses: actions/checkout@v2
