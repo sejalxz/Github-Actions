@@ -5,20 +5,20 @@ jobs:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v2
-          - run: echo "$now"
+          - run: echo date
     Job-2:
         runs-on: windows-latest
         steps:
-          - run: Write-Output "$(Get-Date)"
+          - run: echo date
     Job-3:
         runs-on: macos-latest
         steps:
-          - run: echo "$now"
+          - run: echo date
     Job-4:
-        runs-on: macos_-atest
+        runs-on: macos-latest
         needs: [Job-1, Job-2, Job-3]
         steps:
           - name: Step 1
             uses: actions/checkout@v2
           - name: Step 2
-            run: echo "$now"
+            run: echo date
