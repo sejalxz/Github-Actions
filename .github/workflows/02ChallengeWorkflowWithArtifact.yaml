@@ -1,0 +1,17 @@
+name: Workflow with Artifact
+env: 
+    ARTIFACT_NAME: "artifact"
+on: [push]
+jobs:
+    Upload_Artifact:
+        name: Upload Artifact
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout the code
+              uses: actions/checkout@v2
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v2
+              with:
+                name: ${{env.ARTIFACT_NAME}}
+                path: ./Challenges/C2artifact
+
